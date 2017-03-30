@@ -12,3 +12,7 @@ this.create_table = function(sql){
 this.create_relationship = function(sql){
   client.query(sql);
 }
+
+this.create_function = function(sql){
+  client.query(sql);
+}

@@ -14,6 +14,10 @@ app.post('/create-relationship', function (req, res) {
   request = req.body;
   res.send(createRelationship(request));
 });
+app.post('/create-function', function (req, res) {
+  request = req.body;
+  res.send(createFunction(request));
+});
 
 function createTable(request) {
   var sql = "CREATE TABLE " + request.type + "(";
@@ -46,6 +50,27 @@ function createRelationship(request) {
     pg.create_relationship(sql);
     return sql;
   }
+}
+
+function createFunction(request){
+  console.log(request);
+  var sql = "CREATE FUNCTION " + request.name + "(";
+  var params = request.params;
+  for (var i = 0, len = params.length; i < len; i++) {
+    sql += params[i].name + " " + params[i].type;
+  }
+  sql += ") RETURNS";
+
+  var retorno = request.returns;
+  if(retorno.isSet) sql += " SETOF";
+  sql += " " + retorno.type;
+  sql += " as $$ ";
+
+  sql += request.implementation.command;
+
+  sql += " $$ language sql stable;";
+  pg.create_function(sql);
+  return sql;
 }
 
 app.listen(3000, function () {
