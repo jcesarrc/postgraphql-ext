@@ -1,0 +1,46 @@
+{
+  searchUsers(nombre: "Seis", first: 5) {
+    pageInfo {
+      hasNextPage
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        id
+        nombre
+      }
+    }
+  }
+}
+
+
+mutation new($item: CreateItemInput!) {
+  createItem(input: $item){
+    item{
+      id
+      stock
+      nombre
+    }
+  }
+}
+
+{
+  "item":{
+    "item": {
+      "stock": 10,
+      "nombre": "Amazon Kindles"
+    }
+  }
+}
+
+
+{
+  searchitembystockbetween(arg1: 1, arg2: 10){
+    nodes{
+      id
+      stock
+      nombre
+    }
+  }
+}

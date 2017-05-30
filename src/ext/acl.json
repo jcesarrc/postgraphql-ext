@@ -1,0 +1,30 @@
+{
+    "resources" : [
+      {
+      "name": "me",
+        "subjects": [
+          {
+            "name": "jcreyes",
+            "actions": [ "QUERY" ]
+          },
+          {
+            "name": "hdblanco",
+            "actions": [ "QUERY", "CREATE", "UPDATE" ]
+          }
+        ]
+      },
+      {
+      "name": "User",
+        "subjects": [
+          {
+            "name": "jcreyes",
+            "actions": [ "QUERY" ]
+          },
+          {
+            "name": "hdblanco",
+            "actions": [ "QUERY", "CREATE", "UPDATE" ]
+          }
+        ]
+      }
+  ]
+}
